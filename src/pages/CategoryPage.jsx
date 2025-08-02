@@ -7,7 +7,7 @@ import { getClassById, getCategoryById } from "@/data/checklistData";
 import { useChecklistProgress } from "@/hooks/useChecklistProgress";
 
 export const CategoryPage = () => {
-  const { classId, categoryId } = useParams<{ classId: string; categoryId: string }>();
+  const { classId, categoryId } = useParams();
   const { toggleItem, isItemCompleted, getCategoryProgress } = useChecklistProgress();
   
   const classData = classId ? getClassById(classId) : null;

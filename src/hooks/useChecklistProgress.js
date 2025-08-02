@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export interface ChecklistProgress {
-  [itemId: string]: boolean;
-}
-
 export const useChecklistProgress = () => {
-  const [progress, setProgress] = useState<ChecklistProgress>({});
+  const [progress, setProgress] = useState({});
 
   // Load progress from localStorage on mount
   useEffect(() => {
@@ -24,23 +20,23 @@ export const useChecklistProgress = () => {
     localStorage.setItem('checklistProgress', JSON.stringify(progress));
   }, [progress]);
 
-  const toggleItem = (itemId: string) => {
+  const toggleItem = (itemId) => {
     setProgress(prev => ({
       ...prev,
       [itemId]: !prev[itemId]
     }));
   };
 
-  const isItemCompleted = (itemId: string): boolean => {
+  const isItemCompleted = (itemId) => {
     return progress[itemId] || false;
   };
 
-  const getCategoryProgress = (categoryItems: { id: string }[]): { completed: number; total: number } => {
+  const getCategoryProgress = (categoryItems) => {
     const completed = categoryItems.filter(item => isItemCompleted(item.id)).length;
     return { completed, total: categoryItems.length };
   };
 
-  const getClassProgress = (classCategories: { items: { id: string }[] }[]): { completed: number; total: number } => {
+  const getClassProgress = (classCategories) => {
     let totalCompleted = 0;
     let totalItems = 0;
     

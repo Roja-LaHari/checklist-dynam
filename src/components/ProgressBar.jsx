@@ -1,12 +1,6 @@
 import { Progress } from "@/components/ui/progress";
 
-interface ProgressBarProps {
-  completed: number;
-  total: number;
-  className?: string;
-}
-
-export const ProgressBar = ({ completed, total, className }: ProgressBarProps) => {
+export const ProgressBar = ({ completed, total, className }) => {
   const percentage = total > 0 ? (completed / total) * 100 : 0;
   
   return (

@@ -1,14 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
-import type { ChecklistItem as ChecklistItemType } from "@/data/checklistData";
 
-interface ChecklistItemProps {
-  item: ChecklistItemType;
-  isCompleted: boolean;
-  onToggle: (itemId: string) => void;
-}
-
-export const ChecklistItem = ({ item, isCompleted, onToggle }: ChecklistItemProps) => {
+export const ChecklistItem = ({ item, isCompleted, onToggle }) => {
   return (
     <Card className={`transition-all duration-300 ${isCompleted ? 'bg-green-50 border-green-200' : ''}`}>
       <CardContent className="p-4">
